@@ -84,49 +84,27 @@ struct CarEvent @0x9b1657f34caf3ad3 {
     startupNoCar @76;
     startupNoControl @77;
     startupMaster @78;
-    startupNoFw @104;
+    startupNoFw @85;
     fcw @79;
     steerSaturated @80;
     belowEngageSpeed @84;
-    noGps @85;
-    wrongCruiseMode @87;
-    modeldLagging @89;
-    deviceFalling @90;
-    fanMalfunction @91;
-    cameraMalfunction @92;
-    gpsMalfunction @94;
-    processNotRunning @95;
-    dashcamMode @96;
-    controlsInitializing @98;
-    usbError @99;
-    roadCameraError @100;
-    driverCameraError @101;
-    wideRoadCameraError @102;
-    localizerMalfunction @103;
-    highCpuUsage @105;
-    cruiseMismatch @106;
-
-    driverMonitorLowAccDEPRECATED @68;
-    radarCanErrorDEPRECATED @15;
-    radarCommIssueDEPRECATED @67;
-    gasUnavailableDEPRECATED @3;
-    dataNeededDEPRECATED @16;
-    modelCommIssueDEPRECATED @27;
-    ipasOverrideDEPRECATED @33;
-    geofenceDEPRECATED @40;
-    driverMonitorOnDEPRECATED @41;
-    driverMonitorOffDEPRECATED @42;
-    calibrationProgressDEPRECATED @47;
-    invalidGiraffeHondaDEPRECATED @49;
-    invalidGiraffeToyotaDEPRECATED @60;
-    internetConnectivityNeededDEPRECATED @61;
-    whitePandaUnsupportedDEPRECATED @81;
-    commIssueWarningDEPRECATED @83;
-    focusRecoverActiveDEPRECATED @86;
-    neosUpdateRequiredDEPRECATED @88;
-    modelLagWarningDEPRECATED @93;
-    startupOneplusDEPRECATED @82;
-    startupFuzzyFingerprintDEPRECATED @97;
+    noGps @83;
+    wrongCruiseMode @82;
+    modeldLagging @81;
+    deviceFalling @68;
+    fanMalfunction @61;
+    cameraMalfunction @67;
+    gpsMalfunction @60;
+    processNotRunning @49;
+    dashcamMode @47;
+    controlsInitializing @42;
+    usbError @41;
+    roadCameraError @40;
+    driverCameraError @33;
+    wideRoadCameraError @27;
+    localizerMalfunction @16;
+    highCpuUsage @15;
+    cruiseMismatch @3;
   }
 }
 
@@ -134,65 +112,65 @@ struct CarEvent @0x9b1657f34caf3ad3 {
 # all speeds in m/s
 
 struct CarState {
-  events @13 :List(CarEvent);
+  events @0 :List(CarEvent);
 
   # car speed
   vEgo @1 :Float32;         # best estimate of speed
-  aEgo @16 :Float32;        # best estimate of acceleration
-  vEgoRaw @17 :Float32;     # unfiltered speed from CAN sensors
-  yawRate @22 :Float32;     # best estimate of yaw rate
-  standstill @18 :Bool;
-  wheelSpeeds @2 :WheelSpeeds;
+  aEgo @2 :Float32;        # best estimate of acceleration
+  vEgoRaw @3 :Float32;     # unfiltered speed from CAN sensors
+  yawRate @4 :Float32;     # best estimate of yaw rate
+  standstill @5 :Bool;
+  wheelSpeeds @6 :WheelSpeeds;
 
   # gas pedal, 0.0-1.0
-  gas @3 :Float32;        # this is user pedal only
-  gasPressed @4 :Bool;    # this is user pedal only
+  gas @7 :Float32;        # this is user pedal only
+  gasPressed @8 :Bool;    # this is user pedal only
 
   # brake pedal, 0.0-1.0
-  brake @5 :Float32;      # this is user pedal only
-  brakePressed @6 :Bool;  # this is user pedal only
-  brakeHoldActive @38 :Bool;
+  brake @9 :Float32;      # this is user pedal only
+  brakePressed @10 :Bool;  # this is user pedal only
+  brakeHoldActive @11 :Bool;
 
   # steering wheel
-  steeringAngleDeg @7 :Float32;
-  steeringAngleOffsetDeg @37 :Float32; # Offset betweens sensors in case there multiple
-  steeringRateDeg @15 :Float32;
-  steeringTorque @8 :Float32;      # TODO: standardize units
-  steeringTorqueEps @27 :Float32;  # TODO: standardize units
-  steeringPressed @9 :Bool;        # if the user is using the steering wheel
-  steeringRateLimited @29 :Bool;   # if the torque is limited by the rate limiter
-  steerWarning @35 :Bool;          # temporary steer unavailble
-  steerError @36 :Bool;            # permanent steer error
-  stockAeb @30 :Bool;
-  stockFcw @31 :Bool;
-  espDisabled @32 :Bool;
+  steeringAngleDeg @12 :Float32;
+  steeringAngleOffsetDeg @13 :Float32; # Offset betweens sensors in case there multiple
+  steeringRateDeg @14 :Float32;
+  steeringTorque @15 :Float32;      # TODO: standardize units
+  steeringTorqueEps @16 :Float32;  # TODO: standardize units
+  steeringPressed @17 :Bool;        # if the user is using the steering wheel
+  steeringRateLimited @18 :Bool;   # if the torque is limited by the rate limiter
+  steerWarning @19 :Bool;          # temporary steer unavailble
+  steerError @20 :Bool;            # permanent steer error
+  stockAeb @21 :Bool;
+  stockFcw @22 :Bool;
+  espDisabled @23 :Bool;
 
   # cruise state
-  cruiseState @10 :CruiseState;
+  cruiseState @24 :CruiseState;
 
   # gear
-  gearShifter @14 :GearShifter;
+  gearShifter @25 :GearShifter;
 
   # button presses
-  buttonEvents @11 :List(ButtonEvent);
-  leftBlinker @20 :Bool;
-  rightBlinker @21 :Bool;
-  genericToggle @23 :Bool;
+  buttonEvents @26 :List(ButtonEvent);
+  leftBlinker @27 :Bool;
+  rightBlinker @28 :Bool;
+  genericToggle @29 :Bool;
 
   # lock info
-  doorOpen @24 :Bool;
-  seatbeltUnlatched @25 :Bool;
-  canValid @26 :Bool;
+  doorOpen @30 :Bool;
+  seatbeltUnlatched @31 :Bool;
+  canValid @32 :Bool;
 
   # clutch (manual transmission only)
-  clutchPressed @28 :Bool;
+  clutchPressed @33 :Bool;
 
   # which packets this state came from
-  canMonoTimes @12: List(UInt64);
+  canMonoTimes @34: List(UInt64);
 
   # blindspot sensors
-  leftBlindspot @33 :Bool; # Is there something blocking the left lane change
-  rightBlindspot @34 :Bool; # Is there something blocking the right lane change
+  leftBlindspot @35 :Bool; # Is there something blocking the left lane change
+  rightBlindspot @36 :Bool; # Is there something blocking the right lane change
 
   struct WheelSpeeds {
     # optional wheel speeds
@@ -244,9 +222,6 @@ struct CarState {
       gapAdjustCruise @11;
     }
   }
-
-  errorsDEPRECATED @0 :List(CarEvent.EventName);
-  brakeLightsDEPRECATED @19 :Bool;
 }
 
 # ******* radar state @ 20hz *******
@@ -288,25 +263,23 @@ struct RadarData @0x888ad6581cf0aacb {
 struct CarControl {
   # must be true for any actuator commands to work
   enabled @0 :Bool;
-  active @7 :Bool;
+  active @1 :Bool;
 
-  actuators @6 :Actuators;
-  roll @8 :Float32;
-  pitch @9 :Float32;
+  actuators @2 :Actuators;
+  roll @3 :Float32;
+  pitch @4 :Float32;
 
-  cruiseControl @4 :CruiseControl;
-  hudControl @5 :HUDControl;
+  cruiseControl @5 :CruiseControl;
+  hudControl @6 :HUDControl;
 
   struct Actuators {
     # range from 0.0 - 1.0
-    gasDEPRECATED @0: Float32;
-    brakeDEPRECATED @1: Float32;
     # range from -1.0 - 1.0
-    steer @2: Float32;
-    steeringAngleDeg @3: Float32;
+    steer @0: Float32;
+    steeringAngleDeg @1: Float32;
 
-    accel @4: Float32; # m/s^2
-    longControlState @5: LongControlState;
+    accel @2: Float32; # m/s^2
+    longControlState @3: LongControlState;
 
     enum LongControlState @0xe40f3a917d908282{
       off @0;
@@ -364,10 +337,6 @@ struct CarControl {
       promptDistracted @8;
     }
   }
-
-  gasDEPRECATED @1 :Float32;
-  brakeDEPRECATED @2 :Float32;
-  steeringTorqueDEPRECATED @3 :Float32;
 }
 
 # ****** car param ******
@@ -375,78 +344,74 @@ struct CarControl {
 struct CarParams {
   carName @0 :Text;
   carFingerprint @1 :Text;
-  fuzzyFingerprint @55 :Bool;
+  fuzzyFingerprint @2 :Bool;
 
-  enableGasInterceptor @2 :Bool;
-  pcmCruise @3 :Bool;        # is openpilot's state tied to the PCM's cruise state?
+  enableGasInterceptor @3 :Bool;
+  pcmCruise @4 :Bool;        # is openpilot's state tied to the PCM's cruise state?
   enableDsu @5 :Bool;        # driving support unit
   enableApgs @6 :Bool;       # advanced parking guidance system
-  enableBsm @56 :Bool;       # blind spot monitoring
-  flags @64 :UInt32;         # flags for car specific quirks
+  enableBsm @7 :Bool;       # blind spot monitoring
+  flags @8 :UInt32;         # flags for car specific quirks
 
-  minEnableSpeed @7 :Float32;
-  minSteerSpeed @8 :Float32;
-  maxSteeringAngleDeg @54 :Float32;
-  safetyConfigs @62 :List(SafetyConfig);
+  minEnableSpeed @9 :Float32;
+  minSteerSpeed @10 :Float32;
+  maxSteeringAngleDeg @11 :Float32;
+  safetyConfigs @12 :List(SafetyConfig);
 
-  steerMaxBP @11 :List(Float32);
-  steerMaxV @12 :List(Float32);
-  gasMaxBPDEPRECATED @13 :List(Float32);
-  gasMaxVDEPRECATED @14 :List(Float32);
-  brakeMaxBPDEPRECATED @15 :List(Float32);
-  brakeMaxVDEPRECATED @16 :List(Float32);
+  steerMaxBP @13 :List(Float32);
+  steerMaxV @14 :List(Float32);
 
   # things about the car in the manual
-  mass @17 :Float32;            # [kg] curb weight: all fluids no cargo
-  wheelbase @18 :Float32;       # [m] distance from rear axle to front axle
-  centerToFront @19 :Float32;   # [m] distance from center of mass to front axle
-  steerRatio @20 :Float32;      # [] ratio of steering wheel angle to front wheel angle
-  steerRatioRear @21 :Float32;  # [] ratio of steering wheel angle to rear wheel angle (usually 0)
+  mass @15 :Float32;            # [kg] curb weight: all fluids no cargo
+  wheelbase @16 :Float32;       # [m] distance from rear axle to front axle
+  centerToFront @17 :Float32;   # [m] distance from center of mass to front axle
+  steerRatio @18 :Float32;      # [] ratio of steering wheel angle to front wheel angle
+  steerRatioRear @19 :Float32;  # [] ratio of steering wheel angle to rear wheel angle (usually 0)
 
   # things we can derive
-  rotationalInertia @22 :Float32;    # [kg*m2] body rotational inertia
-  tireStiffnessFront @23 :Float32;   # [N/rad] front tire coeff of stiff
-  tireStiffnessRear @24 :Float32;    # [N/rad] rear tire coeff of stiff
+  rotationalInertia @20 :Float32;    # [kg*m2] body rotational inertia
+  tireStiffnessFront @21 :Float32;   # [N/rad] front tire coeff of stiff
+  tireStiffnessRear @22 :Float32;    # [N/rad] rear tire coeff of stiff
 
-  longitudinalTuning @25 :LongitudinalPIDTuning;
-  lateralParams @48 :LateralParams;
+  longitudinalTuning @23 :LongitudinalPIDTuning;
+  lateralParams @24 :LateralParams;
   lateralTuning :union {
-    pid @26 :LateralPIDTuning;
-    indi @27 :LateralINDITuning;
-    lqr @40 :LateralLQRTuning;
+    pid @25 :LateralPIDTuning;
+    indi @26 :LateralINDITuning;
+    lqr @27 :LateralLQRTuning;
   }
 
   steerLimitAlert @28 :Bool;
-  steerLimitTimer @47 :Float32;  # time before steerLimitAlert is issued
+  steerLimitTimer @29 :Float32;  # time before steerLimitAlert is issued
 
-  vEgoStopping @29 :Float32; # Speed at which the car goes into stopping state
-  vEgoStarting @59 :Float32; # Speed at which the car goes into starting state
-  directAccelControl @30 :Bool; # Does the car have direct accel control or just gas/brake
-  stoppingControl @31 :Bool; # Does the car allows full control even at lows speeds when stopping
-  startAccel @32 :Float32; # Required acceleraton to overcome creep braking
-  stopAccel @60 :Float32; # Required acceleraton to keep vehicle stationary
-  steerRateCost @33 :Float32; # Lateral MPC cost on steering rate
-  steerControlType @34 :SteerControlType;
-  radarOffCan @35 :Bool; # True when radar objects aren't visible on CAN
-  minSpeedCan @51 :Float32; # Minimum vehicle speed from CAN (below this value drops to 0)
-  stoppingDecelRate @52 :Float32; # m/s^2/s while trying to stop
-  startingAccelRate @53 :Float32; # m/s^2/s while trying to start
+  vEgoStopping @30 :Float32; # Speed at which the car goes into stopping state
+  vEgoStarting @31 :Float32; # Speed at which the car goes into starting state
+  directAccelControl @32 :Bool; # Does the car have direct accel control or just gas/brake
+  stoppingControl @33 :Bool; # Does the car allows full control even at lows speeds when stopping
+  startAccel @34 :Float32; # Required acceleraton to overcome creep braking
+  stopAccel @35 :Float32; # Required acceleraton to keep vehicle stationary
+  steerRateCost @36 :Float32; # Lateral MPC cost on steering rate
+  steerControlType @37 :SteerControlType;
+  radarOffCan @38 :Bool; # True when radar objects aren't visible on CAN
+  minSpeedCan @39 :Float32; # Minimum vehicle speed from CAN (below this value drops to 0)
+  stoppingDecelRate @40 :Float32; # m/s^2/s while trying to stop
+  startingAccelRate @41 :Float32; # m/s^2/s while trying to start
 
-  steerActuatorDelay @36 :Float32; # Steering wheel actuator delay in seconds
-  longitudinalActuatorDelayLowerBound @61 :Float32; # Gas/Brake actuator delay in seconds, lower bound
-  longitudinalActuatorDelayUpperBound @58 :Float32; # Gas/Brake actuator delay in seconds, upper bound
-  openpilotLongitudinalControl @37 :Bool; # is openpilot doing the longitudinal control?
-  carVin @38 :Text; # VIN number queried during fingerprinting
-  dashcamOnly @41: Bool;
-  transmissionType @43 :TransmissionType;
-  carFw @44 :List(CarFw);
+  steerActuatorDelay @42 :Float32; # Steering wheel actuator delay in seconds
+  longitudinalActuatorDelayLowerBound @43 :Float32; # Gas/Brake actuator delay in seconds, lower bound
+  longitudinalActuatorDelayUpperBound @44 :Float32; # Gas/Brake actuator delay in seconds, upper bound
+  openpilotLongitudinalControl @45 :Bool; # is openpilot doing the longitudinal control?
+  carVin @46 :Text; # VIN number queried during fingerprinting
+  dashcamOnly @47: Bool;
+  transmissionType @48 :TransmissionType;
+  carFw @49 :List(CarFw);
 
-  radarTimeStep @45: Float32 = 0.05;  # time delta between radar updates, 20Hz is very standard
-  communityFeature @46: Bool;  # true if a community maintained feature is detected
-  fingerprintSource @49: FingerprintSource;
-  networkLocation @50 :NetworkLocation;  # Where Panda/C2 is integrated into the car's CAN network
+  radarTimeStep @50: Float32 = 0.05;  # time delta between radar updates, 20Hz is very standard
+  communityFeature @51: Bool;  # true if a community maintained feature is detected
+  fingerprintSource @52: FingerprintSource;
+  networkLocation @53 :NetworkLocation;  # Where Panda/C2 is integrated into the car's CAN network
 
-  wheelSpeedFactor @63 :Float32; # Multiplier on wheels speeds to computer actual speeds
+  wheelSpeedFactor @54 :Float32; # Multiplier on wheels speeds to computer actual speeds
 
   struct SafetyConfig {
     safetyModel @0 :SafetyModel;
@@ -476,19 +441,14 @@ struct CarParams {
   }
 
   struct LateralINDITuning {
-    outerLoopGainBP @4 :List(Float32);
-    outerLoopGainV @5 :List(Float32);
-    innerLoopGainBP @6 :List(Float32);
-    innerLoopGainV @7 :List(Float32);
-    timeConstantBP @8 :List(Float32);
-    timeConstantV @9 :List(Float32);
-    actuatorEffectivenessBP @10 :List(Float32);
-    actuatorEffectivenessV @11 :List(Float32);
-
-    outerLoopGainDEPRECATED @0 :Float32;
-    innerLoopGainDEPRECATED @1 :Float32;
-    timeConstantDEPRECATED @2 :Float32;
-    actuatorEffectivenessDEPRECATED @3 :Float32;
+    outerLoopGainBP @0 :List(Float32);
+    outerLoopGainV @1 :List(Float32);
+    innerLoopGainBP @2 :List(Float32);
+    innerLoopGainV @3 :List(Float32);
+    timeConstantBP @4 :List(Float32);
+    timeConstantV @5 :List(Float32);
+    actuatorEffectivenessBP @6 :List(Float32);
+    actuatorEffectivenessV @7 :List(Float32);
   }
 
   struct LateralLQRTuning {
@@ -588,11 +548,4 @@ struct CarParams {
     fwdCamera @0;  # Standard/default integration at LKAS camera
     gateway @1;    # Integration at vehicle's CAN gateway
   }
-
-  enableCameraDEPRECATED @4 :Bool;
-  isPandaBlackDEPRECATED @39: Bool;
-  hasStockCameraDEPRECATED @57 :Bool;
-  safetyParamDEPRECATED @10 :Int16;
-  safetyModelDEPRECATED @9 :SafetyModel;
-  safetyModelPassiveDEPRECATED @42 :SafetyModel = silent;
 }
